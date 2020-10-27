@@ -18,7 +18,8 @@ import todos from "../data/todos";
 export default {
   data() {
     return {
-      todos: []
+      todos: [],
+      dialog: false
     };
   },
   components: {
