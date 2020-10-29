@@ -9,12 +9,15 @@
       <p>You do not have any todos</p>
     </div>
     <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <!-- modal -->
+    <Modal :dialog="dialog" @closeModal="closeModal" />
   </div>
 </template>
 
 <script>
 import TodoItem from "./TodoItem";
 import todos from "../data/todos";
+import Modal from "./Modal";
 export default {
   data() {
     return {
@@ -23,11 +26,15 @@ export default {
     };
   },
   components: {
-    TodoItem
+    TodoItem,
+    Modal
   },
   methods: {
     addTodo() {
-      console.log("hello");
+      this.dialog = true;
+    },
+    closeModal() {
+      this.dialog = false;
     }
   },
   created() {
