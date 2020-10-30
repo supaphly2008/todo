@@ -44,7 +44,7 @@ export default {
   max-width: 600px;
   background-color: rgb(231, 231, 231);
   border-radius: 5px;
-
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
   &__header {
     border-radius: 5px 5px 0 0;
     /* background-color: teal; */
