@@ -3,23 +3,33 @@
     <v-dialog :value="dialog" max-width="290" @click:outside="closeModal">
       <v-card>
         <v-card-title class="headline">
-          Use Google's location service?
+          Add Todo
         </v-card-title>
 
-        <v-card-text>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
-        </v-card-text>
+        <v-form>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="form.title"
+                  :counter="10"
+                  label="title"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
 
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn color="green darken-1" text @click="closeModal">
-            Disagree
+          <v-btn color="pink darken-1" text @click="cancel">
+            Cancel
           </v-btn>
 
-          <v-btn color="green darken-1" text @click="closeModal">
-            Agree
+          <v-btn color="green darken-1" text @click="save">
+            Save
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -33,11 +43,30 @@ export default {
     dialog: Boolean
   },
   data() {
-    return {};
+    return {
+      form: {
+        title: ""
+      }
+    };
   },
   methods: {
     closeModal() {
       this.$emit("closeModal");
+    },
+    cancel() {
+      this.closeModal();
+    },
+    save() {
+      const savedData = {
+        id: 4,
+        title: this.form.title,
+        isDone: false
+      };
+      // mock api call to save todo
+      setTimeout(() => {
+        console.log("saved data", savedData);
+        this.closeModal();
+      }, 3000);
     }
   }
 };
