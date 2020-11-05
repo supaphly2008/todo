@@ -1,6 +1,9 @@
 <template>
   <div class="todo">
-    <div class="todo__header indigo d-flex justify-end align-center px-4">
+    <div
+      class="todo__header indigo d-flex justify-space-between align-center px-4"
+    >
+      <h2 class="todo__heading">My ToDo List</h2>
       <v-btn @click="addTodo" icon color="white">
         <v-icon>fas fa-plus</v-icon>
       </v-btn>
@@ -63,6 +66,11 @@ export default {
     /* background-color: teal; */
     height: 60px;
     width: 100%;
+  }
+  &__heading {
+    font-family: "Lobster", cursive;
+    color: #fff;
+    font-weight: normal;
   }
 
   &__todo-none {
