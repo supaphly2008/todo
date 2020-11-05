@@ -8,13 +8,15 @@
     <div class="todo__todo-none" v-if="todos.length === 0">
       <p>You do not have any todos</p>
     </div>
-    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
-    <!-- modal -->
+    <v-list>
+      <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    </v-list>
     <Modal :dialog="dialog" @closeModal="closeModal" />
   </div>
 </template>
 
 <script>
+// import Item from "./Item";
 import TodoItem from "./TodoItem";
 import todos from "../data/todos";
 import Modal from "./Modal";
@@ -26,8 +28,8 @@ export default {
     };
   },
   components: {
-    TodoItem,
-    Modal
+    Modal,
+    TodoItem
   },
   methods: {
     addTodo() {
@@ -35,6 +37,10 @@ export default {
     },
     closeModal() {
       this.dialog = false;
+    },
+    selectedTodo() {
+      alert("hello");
+      console.log("hello");
     }
   },
   created() {
