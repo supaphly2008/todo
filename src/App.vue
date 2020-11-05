@@ -1,14 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <!-- <v-main>
-        <Todo />
-      </v-main> -->
-
       <v-container fill-height>
-        <!-- <v-row justify="center" align="center">
-          <div class="app__heading"><h1>Show me what ToDo</h1></div>
-        </v-row> -->
         <v-row justify="center" align="center">
           <v-col>
             <h1 class="app__heading">Show me what ToDo 😎</h1>

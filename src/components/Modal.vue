@@ -66,7 +66,7 @@ export default {
       setTimeout(() => {
         console.log("saved data", savedData);
         this.closeModal();
-      }, 3000);
+      }, 1500);
     }
   }
 };
