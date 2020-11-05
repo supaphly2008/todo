@@ -4,9 +4,14 @@
       <!-- <v-main>
         <Todo />
       </v-main> -->
+
       <v-container fill-height>
+        <!-- <v-row justify="center" align="center">
+          <div class="app__heading"><h1>Show me what ToDo</h1></div>
+        </v-row> -->
         <v-row justify="center" align="center">
           <v-col>
+            <h1 class="app__heading">Show me what ToDo 😎</h1>
             <Todo />
           </v-col>
         </v-row>
@@ -34,5 +39,10 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+.app__heading {
+  font-family: "Lobster", cursive;
+  text-align: center;
+  margin-bottom: 42px;
 }
 </style>
