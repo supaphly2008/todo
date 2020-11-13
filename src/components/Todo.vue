@@ -12,9 +12,20 @@
       <p>You do not have any todos</p>
     </div>
     <v-list>
-      <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+      <TodoItem
+        @click.native="editTodo(todo)"
+        v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+      />
     </v-list>
-    <Modal :dialog="dialog" @closeModal="closeModal" />
+    <Modal
+      v-if="dialog"
+      :modalType="modalType"
+      :todo="todo"
+      :dialog="dialog"
+      @closeModal="closeModal"
+    />
   </div>
 </template>
 
@@ -23,33 +34,44 @@
 import TodoItem from "./TodoItem";
 import todos from "../data/todos";
 import Modal from "./Modal";
+
+export const MODAL_TYPE = {
+  ADD: "ADD",
+  EDIT: "EDIT",
+};
 export default {
   data() {
     return {
       todos: [],
-      dialog: false
+      dialog: false,
+      modalType: null,
+      todo: {},
     };
   },
   components: {
     Modal,
-    TodoItem
+    TodoItem,
   },
   methods: {
     addTodo() {
       this.dialog = true;
+      this.modalType = MODAL_TYPE.ADD;
+      this.todo = {};
+    },
+    editTodo(todo) {
+      this.dialog = true;
+      console.log("edit", todo);
+      this.modalType = MODAL_TYPE.EDIT;
+      this.todo = todo;
     },
     closeModal() {
       this.dialog = false;
     },
-    selectedTodo() {
-      alert("hello");
-      console.log("hello");
-    }
   },
   created() {
     // fetch todos
     this.todos = todos;
-  }
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <v-list-item @click="selectedTodo(todo)">
+  <v-list-item>
     <v-list-item-content>
       <v-list-item-title>{{ todo.title }}</v-list-item-title>
     </v-list-item-content>
@@ -50,9 +50,6 @@ export default {
     }
   },
   methods: {
-    selectedTodo(todo) {
-      console.log("todo", todo);
-    },
     completeTodo(todo) {
       console.log("completeTodo", todo);
     },
