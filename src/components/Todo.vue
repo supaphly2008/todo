@@ -30,9 +30,7 @@
 </template>
 
 <script>
-// import Item from "./Item";
 import TodoItem from "./TodoItem";
-import todos from "../data/todos";
 import Modal from "./Modal";
 
 export const MODAL_TYPE = {
@@ -54,23 +52,25 @@ export default {
   },
   methods: {
     addTodo() {
-      this.dialog = true;
+      this.openModal();
       this.modalType = MODAL_TYPE.ADD;
       this.todo = {};
     },
     editTodo(todo) {
-      this.dialog = true;
-      console.log("edit", todo);
+      this.openModal();
       this.modalType = MODAL_TYPE.EDIT;
       this.todo = todo;
     },
     closeModal() {
       this.dialog = false;
     },
+    openModal() {
+      this.dialog = true;
+    },
   },
   created() {
-    // fetch todos
-    this.todos = todos;
+    // fetch todos from localstorage
+    this.todos = JSON.parse(localStorage.todos);
   },
 };
 </script>

@@ -22,7 +22,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn color="pink darken-1" text @click="cancel"> Cancel </v-btn>
+          <v-btn color="pink darken-1" text @click="closeModal"> Cancel </v-btn>
 
           <v-btn color="green darken-1" text @click="save"> Save </v-btn>
         </v-card-actions>
@@ -59,9 +59,6 @@ export default {
     closeModal() {
       this.form.title = "";
       this.$emit("closeModal");
-    },
-    cancel() {
-      this.closeModal();
     },
     save() {
       const savedData = {

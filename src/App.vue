@@ -15,11 +15,18 @@
 
 <script>
 import Todo from "./components/Todo";
+import todos from "./data/todos";
 export default {
   name: "App",
   components: {
-    Todo
-  }
+    Todo,
+  },
+  created() {
+    // Initialize TODOs when the app first started
+    if (!localStorage.todos) {
+      localStorage.todos = JSON.stringify(todos);
+    }
+  },
 };
 </script>
 
