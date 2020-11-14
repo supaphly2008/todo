@@ -68,11 +68,10 @@ export default {
           isDone: false,
           createdTime: new Date(),
         };
-        // save ID
         this.$emit("saveTodo", todo);
       } else {
-        // use existing ID
-        // console.log("Edit data", savedData);
+        const todo = { ...this.todo, title: this.form.title };
+        this.$emit("editTodo", todo);
       }
 
       this.closeModal();

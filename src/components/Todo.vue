@@ -30,6 +30,7 @@
       :dialog="dialog"
       @closeModal="closeModal"
       @saveTodo="saveTodo"
+      @editTodo="editTodo"
     />
   </div>
 </template>
@@ -71,6 +72,13 @@ export default {
     },
     saveTodo(todo) {
       this.todos.push(todo);
+      saveToLocalStorage("todos", this.todos);
+    },
+    editTodo(editTodoItem) {
+      const position = this.todos.findIndex((todo) => {
+        return todo.id === editTodoItem.id;
+      });
+      this.todos[position].title = editTodoItem.title;
       saveToLocalStorage("todos", this.todos);
     },
     deleteTodo(deletTodoItem) {
