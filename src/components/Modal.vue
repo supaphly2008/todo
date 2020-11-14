@@ -24,7 +24,14 @@
 
           <v-btn color="pink darken-1" text @click="closeModal"> Cancel </v-btn>
 
-          <v-btn color="green darken-1" text @click="save"> Save </v-btn>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="save"
+            :disabled="!form.title"
+          >
+            Save
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
