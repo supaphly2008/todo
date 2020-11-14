@@ -55,20 +55,22 @@ export default {
   },
   methods: {
     addTodo() {
-      this.openModal();
-      this.modalType = MODAL_TYPE.ADD;
-      this.todo = {};
+      this.openModal(MODAL_TYPE.ADD);
     },
     editTodo(todo) {
-      this.openModal();
-      this.modalType = MODAL_TYPE.EDIT;
-      this.todo = todo;
+      this.openModal(MODAL_TYPE.EDIT, todo);
     },
     closeModal() {
       this.dialog = false;
     },
-    openModal() {
+    /**
+     * @param type - Modal type (add or edit)
+     * @param todo - Todo data
+     */
+    openModal(type, todo = {}) {
       this.dialog = true;
+      this.modalType = type;
+      this.todo = todo;
     },
   },
   created() {
