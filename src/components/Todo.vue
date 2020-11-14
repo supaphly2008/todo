@@ -83,8 +83,8 @@ export default {
       const position = this.todos.findIndex((todo) => {
         return todo.id === doneTodoItem.id;
       });
-      this.todos[position].isDone = true;
-      console.log(this.todos);
+      this.todos[position].isDone = !this.todos[position].isDone;
+      saveToLocalStorage("todos", this.todos);
     },
   },
   created() {
