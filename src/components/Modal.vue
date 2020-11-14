@@ -10,7 +10,7 @@
               <v-col>
                 <v-text-field
                   v-model="form.title"
-                  :counter="10"
+                  :counter="20"
                   label="Title"
                   required
                 ></v-text-field>
@@ -61,19 +61,18 @@ export default {
       this.$emit("closeModal");
     },
     save() {
-      const savedData = {
-        id: this.$uuid.v1(),
-        title: this.form.title,
-        isDone: false,
-        createdTime: new Date(),
-      };
-
       if (this.modalType === MODAL_TYPE.ADD) {
+        const todo = {
+          id: this.$uuid.v1(),
+          title: this.form.title,
+          isDone: false,
+          createdTime: new Date(),
+        };
         // save ID
-        console.log("add data", savedData);
+        this.$emit("saveTodo", todo);
       } else {
         // use existing ID
-        console.log("Edit data", savedData);
+        // console.log("Edit data", savedData);
       }
 
       this.closeModal();

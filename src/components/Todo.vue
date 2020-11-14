@@ -4,7 +4,7 @@
       class="todo__header indigo d-flex justify-space-between align-center px-4"
     >
       <h2 class="todo__heading">My ToDo List</h2>
-      <v-btn @click="addTodo" icon color="white">
+      <v-btn @click="openModal('ADD')" icon color="white">
         <v-icon>fas fa-plus</v-icon>
       </v-btn>
     </div>
@@ -13,7 +13,7 @@
     </div>
     <v-list>
       <TodoItem
-        @click.native="editTodo(todo)"
+        @click.native="openModal('EDIT', todo)"
         v-for="(todo, index) in todos"
         :key="todo.id"
         :todo="todo"
@@ -27,6 +27,7 @@
       :todo="todo"
       :dialog="dialog"
       @closeModal="closeModal"
+      @saveTodo="saveTodo"
     />
   </div>
 </template>
@@ -34,7 +35,7 @@
 <script>
 import TodoItem from "./TodoItem";
 import Modal from "./Modal";
-import { getFromLocalStorage } from "../utils";
+import { getFromLocalStorage, saveToLocalStorage } from "../utils";
 
 export const MODAL_TYPE = {
   ADD: "ADD",
@@ -54,12 +55,6 @@ export default {
     TodoItem,
   },
   methods: {
-    addTodo() {
-      this.openModal(MODAL_TYPE.ADD);
-    },
-    editTodo(todo) {
-      this.openModal(MODAL_TYPE.EDIT, todo);
-    },
     closeModal() {
       this.dialog = false;
     },
@@ -72,19 +67,14 @@ export default {
       this.modalType = type;
       this.todo = todo;
     },
+    saveTodo(todo) {
+      this.todos.push(todo);
+      saveToLocalStorage("todos", this.todos);
+    },
   },
   created() {
     // fetch todos from localstorage
     this.todos = getFromLocalStorage("todos");
-    // setTimeout(() => {
-    //   this.todos.push({
-    //     id: this.$uuid.v1(),
-    //     title: "buy food",
-    //     isDone: false,
-    //     createdTime: new Date(),
-    //   });
-    //   // localStorage.todos = JSON.stringify(this.todos);
-    // }, 5000);
   },
 };
 </script>

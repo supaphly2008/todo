@@ -2,8 +2,12 @@
   <div>
     <v-list-item link>
       <v-list-item-content>
-        <v-list-item-title>{{ todo.title }}</v-list-item-title>
-        <v-list-item-subtitle>{{ createdTime }}</v-list-item-subtitle>
+        <v-list-item-title :class="todoDone">{{
+          todo.title
+        }}</v-list-item-title>
+        <v-list-item-subtitle :class="todoDone">{{
+          createdTime
+        }}</v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-icon>
         <v-tooltip left>
@@ -63,6 +67,9 @@ export default {
     },
     endOfTodo() {
       return this.todoIndex === this.todoTotal - 1;
+    },
+    todoDone() {
+      return this.todo.isDone ? "text-decoration-line-through" : "";
     },
   },
   methods: {
