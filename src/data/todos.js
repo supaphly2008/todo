@@ -1,18 +1,20 @@
+import { uuid } from "vue-uuid";
+
 const todos = [
   {
-    id: 1,
+    id: uuid.v1(),
     title: "feed my cat",
     isDone: false,
     createdTime: new Date(),
   },
   {
-    id: 2,
+    id: uuid.v1(),
     title: "pay card",
     isDone: false,
     createdTime: new Date(),
   },
   {
-    id: 3,
+    id: uuid.v1(),
     title: "take a rest",
     isDone: true,
     createdTime: new Date(),
