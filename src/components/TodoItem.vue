@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item link>
+    <v-list-item :link="!todo.isDone">
       <v-list-item-content>
         <v-list-item-title :class="todoDone">{{
           todo.title

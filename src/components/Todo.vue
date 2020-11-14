@@ -13,7 +13,7 @@
     </div>
     <v-list>
       <TodoItem
-        @click.native="openModal('EDIT', todo)"
+        @click.native="todo.isDone ? null : openModal('EDIT', todo)"
         @deleteTodo="deleteTodo"
         @completeTodo="completeTodo"
         v-for="(todo, index) in todos"
