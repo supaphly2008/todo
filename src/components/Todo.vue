@@ -14,6 +14,8 @@
     <v-list>
       <TodoItem
         @click.native="openModal('EDIT', todo)"
+        @deleteTodo="deleteTodo"
+        @completeTodo="completeTodo"
         v-for="(todo, index) in todos"
         :key="todo.id"
         :todo="todo"
@@ -70,6 +72,19 @@ export default {
     saveTodo(todo) {
       this.todos.push(todo);
       saveToLocalStorage("todos", this.todos);
+    },
+    deleteTodo(deletTodoItem) {
+      this.todos = this.todos.filter((todo) => {
+        return todo.id !== deletTodoItem.id;
+      });
+      saveToLocalStorage("todos", this.todos);
+    },
+    completeTodo(doneTodoItem) {
+      const position = this.todos.findIndex((todo) => {
+        return todo.id === doneTodoItem.id;
+      });
+      this.todos[position].isDone = true;
+      console.log(this.todos);
     },
   },
   created() {

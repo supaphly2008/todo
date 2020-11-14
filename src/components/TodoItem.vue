@@ -74,10 +74,10 @@ export default {
   },
   methods: {
     completeTodo(todo) {
-      console.log("completeTodo", todo);
+      this.$emit("completeTodo", todo);
     },
     deleteTodo(todo) {
-      console.log("deleteTodo", todo);
+      this.$emit("deleteTodo", todo);
     },
   },
 };
