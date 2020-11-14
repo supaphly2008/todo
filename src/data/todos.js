@@ -10,13 +10,13 @@ const todos = [
   {
     id: uuid.v1(),
     title: "pay card",
-    isDone: false,
+    isDone: true,
     createdTime: new Date(),
   },
   {
     id: uuid.v1(),
     title: "take a rest",
-    isDone: true,
+    isDone: false,
     createdTime: new Date(),
   },
 ];

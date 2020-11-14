@@ -62,13 +62,20 @@ export default {
     },
     save() {
       const savedData = {
-        id: 4,
+        id: this.$uuid.v1(),
         title: this.form.title,
         isDone: false,
         createdTime: new Date(),
       };
 
-      console.log("saved data", savedData);
+      if (this.modalType === MODAL_TYPE.ADD) {
+        // save ID
+        console.log("add data", savedData);
+      } else {
+        // use existing ID
+        console.log("Edit data", savedData);
+      }
+
       this.closeModal();
     },
   },

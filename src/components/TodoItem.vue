@@ -11,7 +11,7 @@
             <v-btn
               @click.stop="completeTodo(todo)"
               icon
-              color="green"
+              :color="todo.isDone ? 'green' : 'grey'"
               dark
               v-bind="attrs"
               v-on="on"
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import { formatDateTime } from "../utils";
 export default {
   props: {
     todo: {
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     createdTime() {
-      return format(new Date(this.todo.createdTime), "yyyy/MM/dd HH:mm");
+      return formatDateTime(new Date(this.todo.createdTime));
     },
     endOfTodo() {
       return this.todoIndex === this.todoTotal - 1;

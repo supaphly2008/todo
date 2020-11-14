@@ -16,6 +16,7 @@
 <script>
 import Todo from "./components/Todo";
 import todos from "./data/todos";
+import { saveToLocalStorage, getFromLocalStorage } from "./utils";
 export default {
   name: "App",
   components: {
@@ -23,8 +24,9 @@ export default {
   },
   created() {
     // Initialize TODOs when the app first started
-    if (!localStorage.todos) {
-      localStorage.todos = JSON.stringify(todos);
+    // Save initial data into localstorage
+    if (!getFromLocalStorage("todos")) {
+      saveToLocalStorage("todos", todos);
     }
   },
 };

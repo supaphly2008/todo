@@ -34,6 +34,7 @@
 <script>
 import TodoItem from "./TodoItem";
 import Modal from "./Modal";
+import { getFromLocalStorage } from "../utils";
 
 export const MODAL_TYPE = {
   ADD: "ADD",
@@ -72,7 +73,16 @@ export default {
   },
   created() {
     // fetch todos from localstorage
-    this.todos = JSON.parse(localStorage.todos);
+    this.todos = getFromLocalStorage("todos");
+    // setTimeout(() => {
+    //   this.todos.push({
+    //     id: this.$uuid.v1(),
+    //     title: "buy food",
+    //     isDone: false,
+    //     createdTime: new Date(),
+    //   });
+    //   // localStorage.todos = JSON.stringify(this.todos);
+    // }, 5000);
   },
 };
 </script>
