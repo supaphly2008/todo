@@ -65,12 +65,11 @@ export default {
         id: 4,
         title: this.form.title,
         isDone: false,
+        createdTime: new Date(),
       };
-      // mock api call to save todo
-      setTimeout(() => {
-        console.log("saved data", savedData);
-        this.closeModal();
-      }, 1500);
+
+      console.log("saved data", savedData);
+      this.closeModal();
     },
   },
   created() {
