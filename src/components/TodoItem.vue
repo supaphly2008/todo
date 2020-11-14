@@ -40,6 +40,7 @@
         </v-tooltip>
       </v-list-item-icon>
     </v-list-item>
+    <v-divider divider v-if="!endOfTodo" />
   </div>
 </template>
 
@@ -53,10 +54,15 @@ export default {
       isDone: Boolean,
       createdTime: Date,
     },
+    todoIndex: Number,
+    todoTotal: Number,
   },
   computed: {
     createdTime() {
       return format(new Date(this.todo.createdTime), "yyyy/MM/dd HH:mm");
+    },
+    endOfTodo() {
+      return this.todoIndex === this.todoTotal - 1;
     },
   },
   methods: {

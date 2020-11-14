@@ -14,9 +14,11 @@
     <v-list>
       <TodoItem
         @click.native="editTodo(todo)"
-        v-for="todo in todos"
+        v-for="(todo, index) in todos"
         :key="todo.id"
         :todo="todo"
+        :todoIndex="index"
+        :todoTotal="todos.length"
       />
     </v-list>
     <Modal
