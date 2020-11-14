@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-list-item>
+    <v-list-item link>
       <v-list-item-content>
         <v-list-item-title>{{ todo.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ createdTime }}</v-list-item-subtitle>
