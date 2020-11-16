@@ -71,7 +71,7 @@ export default {
       this.todo = todo;
     },
     saveTodo(todo) {
-      this.todos.push(todo);
+      this.todos.unshift(todo);
       saveToLocalStorage("todos", this.todos);
     },
     editTodo(editTodoItem) {
