@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     allowedDates(val) {
-      return parseInt(val.split("-")[2], 10) % 2 === 0;
+      return new Date().toISOString().substr(0, 10) <= val;
     },
     closeModal() {
       this.form.title = "";
@@ -133,6 +133,7 @@ export default {
           title: this.form.title,
           isDone: false,
           createdTime: new Date(),
+          dueDate: new Date(this.form.date),
         };
         this.$emit("saveTodo", todo);
       } else {
