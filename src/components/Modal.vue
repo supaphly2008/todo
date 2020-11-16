@@ -7,7 +7,7 @@
         <v-form>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="8">
+              <v-col cols="12">
                 <v-text-field
                   v-model="form.title"
                   :counter="20"
@@ -15,8 +15,19 @@
                   required
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="4">
+            </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-switch
+                  v-model="dueDate"
+                  label="Set Due Date"
+                  color="pink"
+                  hide-details
+                ></v-switch>
+              </v-col>
+              <v-col cols="12">
                 <v-menu
+                  v-if="dueDate"
                   ref="menu"
                   v-model="menu"
                   :close-on-content-click="false"
@@ -96,6 +107,7 @@ export default {
         date: formatDateTime(new Date(), "yyyy-MM-dd").substr(0, 10),
       },
       menu: false,
+      dueDate: false,
     };
   },
   computed: {
